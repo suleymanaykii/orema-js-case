@@ -5,7 +5,6 @@ let sourceFileData: File;
 let destinationNumber: number;
 
 export default function move(list: List, source: string, destination: string): List {
-  // find file
   list.forEach((data) => {
     if (data.id === source) throw new Error('You cannot move a folder');
     data.files.forEach((fileData, index) => {
@@ -15,7 +14,6 @@ export default function move(list: List, source: string, destination: string): L
       }
     });
   });
-  // write file
   destinationNumber = list.findIndex((item) => item.id === destination);
   if (destinationNumber < 0) throw new Error('You cannot specify a file as the destination');
   if (list[destinationNumber].files.findIndex((item) => item.name === sourceFileData.name) >= 0)
